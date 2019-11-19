@@ -1,0 +1,68 @@
+
+/****************************************/
+/* common styles used for v1 through v4 */
+/****************************************/
+
+body          { font-family: Arial, Helvetica, sans-serif; }
+#stats        { border: 2px solid black; }
+#controls     { width: 28em; float: left; padding: 1em; font-size: 0.7em; display: none}
+#controls th  { text-align: right; vertical-align: middle; display:none }
+#instructions { position: relative; z-index: 0; width: 640px;  margin-left: 20em;}
+#instructions p { font-family: Verdana, Geneva, sans-serif; font-size: 0.8em; text-align: right}
+#racer        { position: relative; z-index: 0; width: 640px; height: 480px; margin-left: 20em; border: 2px solid black; }
+#canvas       { position: absolute; z-index: 0; width: 640px; height: 480px; z-index: 0; background-color: #72D7EE; }
+#mute         { background-position:   0px 0px; width: 32px; height: 32px; background: url(images/mute.png); display: inline-block; cursor: pointer; position: absolute; margin-left: 20em; }
+#mute.on      { background-position: -32px 0px; }
+
+/**************************************************/
+/* rudimentary heads up display (only used in v4) */
+/**************************************************/
+
+#hud                   { position: absolute; z-index: 1; width: 640px; padding: 5px 0; font-family: Verdana, Geneva, sans-serif; font-size: 0.8em; background-color: rgba(255,0,0,0.4); color: black; border-bottom: 2px solid black; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
+#hud .hud              { background-color: rgba(255,255,255,0.6); padding: 5px; border: 1px solid black; margin: 0 5px; transition-property: background-color; transition-duration: 2s; -webkit-transition-property: background-color; -webkit-transition-duration: 2s; }
+#hud #speed            { float: right; }
+#hud #current_lap_time { float: left;  }
+#hud #last_lap_time    { float: left; display: none;  }
+#hud #fast_lap_time    { display: block; width: 12em;  margin: 0 auto; text-align: center; transition-property: background-color; transition-duration: 2s; -webkit-transition-property: background-color; -webkit-transition-duration: 2s; }
+#hud #lap_number       { display: block; width: 12em;  margin: 0 auto; text-align: center; transition-property: background-color; transition-duration: 2s; -webkit-transition-property: background-color; -webkit-transition-duration: 2s; }
+#hud .value            { color: black; font-weight: bold; }
+#hud .fastest          { background-color: rgba(255,215,0,0.5); }
+
+.blink_text   {
+    animation: blinker 0.5s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+table #controls {
+    display: none;
+}
+#overlay {
+    display: none;
+    position: absolute; width: 640px; height: 480px; margin-left: 20em; border: 2px solid black;
+    background-color: rgba(0,0,0,0.6); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
+
+.overlay_text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    font-family: 'VT323', monospace;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+#overlay_text_pixel {
+    font-family: 'VT323', monospace;
+    font-size: 2em;
+}
