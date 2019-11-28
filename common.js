@@ -84,13 +84,13 @@ var Util = {
 //=========================================================================
 
 if (!window.requestAnimationFrame) { // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
-  window.requestAnimationFrame = window.webkitRequestAnimationFrame || 
-                                 window.mozRequestAnimationFrame    || 
-                                 window.oRequestAnimationFrame      || 
-                                 window.msRequestAnimationFrame     || 
-                                 function(callback, element) {
-                                   window.setTimeout(callback, 1000 / 60);
-                                 }
+  window.requestAnimationFrame = window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame    ||
+      window.oRequestAnimationFrame      ||
+      window.msRequestAnimationFrame     ||
+      function(callback, element) {
+        window.setTimeout(callback, 1000 / 60);
+      }
 }
 
 //=========================================================================
@@ -131,7 +131,7 @@ var Game = {  // a modified version of the game loop from my previous boulderdas
         requestAnimationFrame(frame, canvas);
       }
       frame(); // lets get this party started
-        //Game.playMusic();
+      //Game.playMusic();
     });
   },
 
@@ -181,22 +181,22 @@ var Game = {  // a modified version of the game loop from my previous boulderdas
     result.domElement.id = id || 'stats';
     Dom.get(parentId).appendChild(result.domElement);
 
-    var msg = document.createElement('div');
-    msg.style.cssText = "border: 2px solid gray; padding: 5px; margin-top: 5px; text-align: left; font-size: 1.15em; text-align: right;";
-    msg.innerHTML = "Your canvas performance is ";
-    Dom.get(parentId).appendChild(msg);
+    //var msg = document.createElement('div');
+    //msg.style.cssText = "border: 2px solid gray; padding: 5px; margin-top: 5px; text-align: left; font-size: 1.15em; text-align: right;";
+    //msg.innerHTML = "Your canvas performance is ";
+    //Dom.get(parentId).appendChild(msg);
 
-    var value = document.createElement('span');
-    value.innerHTML = "...";
-    msg.appendChild(value);
+    //var value = document.createElement('span');
+    //value.innerHTML = "...";
+    //msg.appendChild(value);
 
     setInterval(function() {
       var fps   = result.current();
       var ok    = (fps > 50) ? 'good'  : (fps < 30) ? 'bad' : 'ok';
       var color = (fps > 50) ? 'green' : (fps < 30) ? 'red' : 'gray';
-      value.innerHTML       = ok;
-      value.style.color     = color;
-      msg.style.borderColor = color;
+      //value.innerHTML       = ok;
+      //value.style.color     = color;
+      //msg.style.borderColor = color;
     }, 5000);
     return result;
   },
@@ -244,14 +244,14 @@ var Render = {
         l1 = Render.laneMarkerWidth(w1, lanes),
         l2 = Render.laneMarkerWidth(w2, lanes),
         lanew1, lanew2, lanex1, lanex2, lane;
-    
+
     ctx.fillStyle = color.grass;
     ctx.fillRect(0, y2, width, y1 - y2);
-    
+
     Render.polygon(ctx, x1-w1-r1, y1, x1-w1, y1, x2-w2, y2, x2-w2-r2, y2, color.rumble);
     Render.polygon(ctx, x1+w1+r1, y1, x1+w1, y1, x2+w2, y2, x2+w2+r2, y2, color.rumble);
     Render.polygon(ctx, x1-w1,    y1, x1+w1, y1, x2+w2, y2, x2-w2,    y2, color.road);
-    
+
     if (color.lane) {
       lanew1 = w1*2/lanes;
       lanew2 = w2*2/lanes;
@@ -260,7 +260,7 @@ var Render = {
       for(lane = 1 ; lane < lanes ; lanex1 += lanew1, lanex2 += lanew2, lane++)
         Render.polygon(ctx, lanex1 - l1/2, y1, lanex1 + l1/2, y1, lanex2 + l2/2, y2, lanex2 - l2/2, y2, color.lane);
     }
-    
+
     Render.fog(ctx, 0, y1, width, y2-y1, fog);
   },
 
@@ -278,7 +278,7 @@ var Render = {
     var sourceY = layer.y
     var sourceW = Math.min(imageW, layer.x+layer.w-sourceX);
     var sourceH = imageH;
-    
+
     var destX = 0;
     var destY = offset;
     var destW = Math.floor(width * (sourceW/imageW));
@@ -293,7 +293,7 @@ var Render = {
 
   sprite: function(ctx, width, height, resolution, roadWidth, sprites, sprite, scale, destX, destY, offsetX, offsetY, clipY) {
 
-                    //  scale for projection AND relative to roadWidth (for tweakUI)
+    //  scale for projection AND relative to roadWidth (for tweakUI)
     var destW  = (sprite.w * scale * width/2) * (SPRITES.SCALE * roadWidth);
     var destH  = (sprite.h * scale * width/2) * (SPRITES.SCALE * roadWidth);
 
