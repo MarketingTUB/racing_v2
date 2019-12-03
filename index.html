@@ -16,7 +16,7 @@
         1st: <span id="first_lap">sec</span><br>
         2nd: <span id="second_lap">sec</span><br>
         3rd: <span id="third_lap">sec</span><br>
-    </span><br>Machen Sie bitte jetzt einen Screenshot und tragen Sie die Zeit in den Fragebogen ein!
+    </span><br>Machen Sie bitte jetzt einen Screenshot!
     </div>
 </div>
 <table id="controls">
@@ -92,8 +92,17 @@
         Loading...
     </div>
     <div id='instructions'>
-        <p id="fps" >
-            <span style="float:right; vertical-align:bottom"><i class="fa fa-info-circle"></i> Use the arrow keys to drive the car.</span></p>
+        <p id="fps">
+            <span style="float:right; vertical-align:bottom"><i class="fa fa-info-circle"></i>Benutze die Pfeiltasten um das Auto zu lenken!</span>
+        </p>
+        <p style="float:left; text-align: left; font-size: 10px;"><b>Info: Wie erstelle ich einen Screenshot?</b> <br>
+            <br>
+            Mac - Um einen Screenshot des gesamten Bildschirms auf der Festplatte zu speichern drücken Sie
+            die Tastenkombination [Umschalten – cmd – 3].<br>
+            <br>
+            Windows - Drücken Sie die Taste „Druck“. Öffnen Sie dann das Programm Paint und fügen Sie mit der
+            Tastenkombination [Strg
+            - v] das Bild ein. Speichern Sie das Bild.</p>
     </div>
 </div>
 
@@ -235,7 +244,9 @@
                 lap_times.push(currentLapTime)
                 lastLapTime = currentLapTime;
                 if (lap_number == 4) {
-                    var total_time = lap_times.reduce(function(pv, cv) { return pv + cv; }, 0);
+                    var total_time = lap_times.reduce(function (pv, cv) {
+                        return pv + cv;
+                    }, 0);
                     Dom.set('total_time', "<span>" + formatTime(total_time) + "</span>")
                     Dom.set('first_lap', "<span>" + formatTime(lap_times[0]) + "</span>")
                     Dom.set('second_lap', "<span>" + formatTime(lap_times[1]) + "</span>")
